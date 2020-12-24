@@ -51,6 +51,11 @@ public class ProductConsumerController {
         return productService.deleteById(id);
     }
 
+    @GetMapping("product/consumer/error")
+    public Result error() {
+        return productService.error();
+    }
+
 //    public Result getErroInfo(Long id){
 //        return new Result(500, "服务器内部出现错误", null);
 //    }

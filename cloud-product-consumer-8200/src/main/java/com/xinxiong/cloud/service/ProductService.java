@@ -16,7 +16,7 @@ public interface ProductService {
      * @return
      */
     @GetMapping("product/provider/get/info")
-    public Result getServiceInfo();
+    Result getServiceInfo();
 
     /**
      * 查询
@@ -24,7 +24,7 @@ public interface ProductService {
      * @return
      */
     @GetMapping("product/provider/get/{id}")
-    public Result selectById(@PathVariable("id") Long id);
+    Result selectById(@PathVariable("id") Long id);
 
     /**
      * 删除
@@ -32,5 +32,8 @@ public interface ProductService {
      * @return
      */
     @GetMapping("product/provider/delete/{id}")
-    public Result deleteById(@PathVariable("id") Long id);
+    Result deleteById(@PathVariable("id") Long id);
+
+    @GetMapping("product/provider/error")
+    Result error();
 }

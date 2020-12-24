@@ -18,4 +18,8 @@ public class ProductFallbackServieImpl implements ProductService {
     public Result deleteById(Long id) {
         return new Result(500,"服务器内部出现错误，导致deleteById接口异常",null);
     }
+
+    public Result error() {
+        return new Result(500,"服务器内部出现错误，error接口实现降级",null);
+    }
 }

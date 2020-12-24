@@ -67,4 +67,10 @@ public class ProductProviderController {
     public Result insertById(@RequestBody Product product){
         return new Result(200, "修改成功", productService.insertOne(product));
     }
+
+    @GetMapping("product/provider/error")
+    public Result error() {
+        System.out.println(1 / 0);
+        return new Result(200, "成功", "success??????");
+    }
 }
