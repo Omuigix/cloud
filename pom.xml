@@ -8,6 +8,7 @@
 		<module>cloud-product-consumer-8200</module>
 		<module>cloud-eureka-server-8300</module>
 		<module>cloud-eureka-server-8301</module>
+		<module>cloud-common-api</module>
 	</modules>
 
 	<groupId>com.xinxiong</groupId>

@@ -3,13 +3,19 @@ server:
 
 spring:
   application:
-    name: cloud-product-consumer-8200
+    name: cloud-product-consumer
 
 eureka:
   instance:
-    instance-id: ${spring.application.name}
+    instance-id: ${spring.application.name}:${server.port}
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
   client:
     fetch-registry: true
     register-with-eureka: true
     service-url:
       defaultZone: http://localhost:8300/eureka/,http://localhost:8301/eureka/
+
+feign:
+  hystrix:
+    enabled: true # fegin默认关闭hystrix服务

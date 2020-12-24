@@ -1,9 +1,6 @@
-server:
-  port: 8100 #端口号
-
 spring:
   application:
-    name: cloud-product-provider-8100
+    name: cloud-product-provider
   datasource:
     url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&userSSL=false
     driverClassName: com.mysql.cj.jdbc.Driver
@@ -16,7 +13,9 @@ mybatis:
 
 eureka:
   instance:
-    instance-id: ${spring.application.name}
+    instance-id: ${spring.application.name}:${server.port}
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
   client:
     fetch-registry: true
     register-with-eureka: true

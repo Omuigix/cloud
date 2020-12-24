@@ -10,7 +10,6 @@ import lombok.Setter;
 @Setter
 @Getter
 public class Result {
-
     private int code;
     private String message;
     private Object result;
