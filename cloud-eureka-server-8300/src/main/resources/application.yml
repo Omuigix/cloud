@@ -1,0 +1,15 @@
+server:
+  port: 8300
+
+spring:
+  application:
+    name: cloud-eureka-server-8300
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/,http://localhost:8301/eureka/

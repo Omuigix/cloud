@@ -1,0 +1,24 @@
+server:
+  port: 8100 #端口号
+
+spring:
+  application:
+    name: cloud-product-provider-8100
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&userSSL=false
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: root
+    password: '0000'
+
+mybatis:
+  mapper-locations: classpath:mapping/*mapper.xml # Mybatis 映射文件位置
+  type-aliases-package: com.xinxiong.cloud.entity  # 表对应的实体类包
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8300/eureka/ #Eureka地址

@@ -1,0 +1,15 @@
+server:
+  port: 8200
+
+spring:
+  application:
+    name: cloud-product-consumer-8200
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8300/eureka/ #Eureka地址

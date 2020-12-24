@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinxiong.cloud.dao.ProductMapper">
+
+    <resultMap id="BaseResultMap" type="com.xinxiong.cloud.entity.Product">
+        <result column="id" jdbcType="BIGINT" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="stock" jdbcType="INTEGER" property="stock" />
+    </resultMap>
+
+    <!--查询-->
+    <select id="selectById" resultType="Product">
+        select * from product where id = #{id}
+    </select>
+
+    <!--删除-->
+    <delete id="deleteById" parameterType="Long">
+        delete from product where id = #{id}
+    </delete>
+
+    <!--修改-->
+    <update id="updateById" parameterType="Product">
+        update product set name = #{name} where id = #{id}
+    </update>
+
+    <!--新增-->
+    <insert id="insertOne" parameterType="Product">
+       insert into product(name, stock) values (#{name}, #{stock})
+    </insert>
+
+</mapper>
