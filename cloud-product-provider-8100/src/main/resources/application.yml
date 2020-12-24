@@ -21,4 +21,4 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://localhost:8300/eureka/ #Eureka地址
+      defaultZone: http://localhost:8300/eureka/,http://localhost:8301/eureka/
