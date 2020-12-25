@@ -1,0 +1,34 @@
+server:
+  port: 8600 #端口号
+
+spring:
+  application:
+    name: cloud-config-server # 应用名称
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/omuigix/cloud-config-server  #git地址
+          username: 410926227@qq.com # git账号名
+          password: 114017xx # git账号密码
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8300/eureka/,http://localhost:8301/eureka/
+
+rabbitmq:
+  host: localhost # rabbitmq主机
+  port: 5672      # rabbitmq端口，注意是5672而不是15672
+  username: guest # 用户名
+  password: guest # 密码
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh # 指定刷新地址

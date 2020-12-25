@@ -9,6 +9,10 @@
 		<module>cloud-eureka-server-8300</module>
 		<module>cloud-eureka-server-8301</module>
 		<module>cloud-common-api</module>
+		<module>cloud-hystrix-dashboard-8400</module>
+		<module>cloud-config-server-8600</module>
+		<module>cloud-stream-producer-8700</module>
+		<module>cloud-stream-consumer-8800</module>
 	</modules>
 
 	<groupId>com.xinxiong</groupId>

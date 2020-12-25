@@ -37,4 +37,6 @@ public interface ProductService {
      */
     public int insertOne(Product product);
 
+    public Product error();
+
 }

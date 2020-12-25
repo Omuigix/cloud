@@ -1,0 +1,29 @@
+spring:
+  cloud:
+    config:
+      name: configtest # 获取配置文件的名称
+      profile: pro # 配置的策略pro-生产 test-测试 dev-开发
+      label: master # 分支
+      discovery:
+        enabled: true # 开启配置信息发现
+        service-id: cloud-config-server # 指定配置中心的service-id
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8300/eureka/,http://localhost:8301/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health
+
+rabbitmq:
+  host: localhost
+  port: 5672
+  username: guest
+  password: guest

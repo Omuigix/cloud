@@ -5,6 +5,7 @@ import com.xinxiong.cloud.entity.Product;
 import com.xinxiong.cloud.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -12,6 +13,7 @@ import javax.annotation.Resource;
 @RestController
 @Slf4j
 @RequestMapping("/")
+@RefreshScope
 public class ProductProviderController {
 
     @Value("${spring.application.name}")
@@ -19,6 +21,9 @@ public class ProductProviderController {
 
     @Value("${server.port}")
     private String port;
+
+    @Value("${hello}")
+    private String hello;
 
     @Resource
     private ProductService productService;
@@ -34,8 +39,8 @@ public class ProductProviderController {
      * @return
      */
     @GetMapping("product/provider/get/{id}")
-    public Result selectById(@PathVariable("id") Long id){
-        return new Result(200, "查询成功", productService.selectById(id));
+    public Result selectById(@PathVariable("id") Long id) {
+        return new Result(200, "查询成功: " + port, productService.selectById(id));
     }
 
     /**
@@ -70,7 +75,16 @@ public class ProductProviderController {
 
     @GetMapping("product/provider/error")
     public Result error() {
-        System.out.println(1 / 0);
-        return new Result(200, "成功", "success??????");
+        return new Result(200, "成功", productService.error());
+    }
+
+    /**
+     * 测试配置中心
+     * @return
+     * @throws Exception
+     */
+    @GetMapping("product/provider/get/config/info")
+    public Result getConfigInfo()throws Exception{
+        return new Result(200,"", this.hello);
     }
 }
