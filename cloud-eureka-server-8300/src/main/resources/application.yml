@@ -2,27 +2,31 @@ spring:
   application:
     name: cloud-eureka-server
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eurekaserver1:8300/eureka/,http://eurekaserver2:8301/eureka/,http://eurekaserver3:8302/eureka/
 ---
-server:
-  port: 8300
-
+spring:
+  profiles: eurekaserver1
 eureka:
   instance:
     hostname: eurekaserver1
-  client:
-    service-url:
-      defaultZone: http://eurekaserver2:8301/eureka/
-spring:
-  profiles: eurekaserver1
----
 server:
-  port: 8301
-
+  port: 8300
+---
+spring:
+  profiles: eurekaserver2
 eureka:
   instance:
     hostname: eurekaserver2
-  client:
-    service-url:
-      defaultZone: http://eurekaserver1:8301/eureka/
+server:
+  port: 8301
+---
 spring:
-  profiles: eurekaserver2
+  profiles: eurekaserver3
+eureka:
+  instance:
+    hostname: eurekaserver3
+server:
+  port: 8302
